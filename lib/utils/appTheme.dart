@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,17 +14,17 @@ class Apptheme{
     double bodyMedium;
     double bodySmall;
 if(Responsive.isMobile(context)){
-  h1=36;
-  h2=18;
-  h3=24;
-  subtitle=18;
-  bodyLarge=16;
-  bodySmall=subtitle;
-  bodyMedium=20;
+  h1=36.sp;
+  h2=18.sp;
+  h3=24.sp;
+  subtitle=18.sp;
+  bodyLarge=16.sp;
+  bodySmall=10.sp;
+  bodyMedium=20.sp;
   }else{
-  bodyLarge=18;
-bodyMedium=16;
-bodySmall=14;
+  bodyLarge=18.sp;
+bodyMedium=16.sp;
+bodySmall=14.sp;
 
   subtitle=20.sp;
   h1=60.sp;

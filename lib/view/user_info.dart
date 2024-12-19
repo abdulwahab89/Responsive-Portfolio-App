@@ -1,14 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lottie/lottie.dart';
 class UserInfo extends StatefulWidget {
-   UserInfo({
-    this.padding,
-    super.key});
-  EdgeInsets? padding;
+  final EdgeInsets? padding;
+
+  const UserInfo({this.padding, super.key});
 
   @override
   State<UserInfo> createState() => _UserInfoState();
@@ -17,52 +13,65 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
-    return         Padding(
-      padding: widget.padding?? EdgeInsets.all(0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+    return LayoutBuilder(builder: (context, constraints){
+      return SizedBox(
+        height: constraints.maxHeight,
+        width: constraints.maxWidth,
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Icon(Icons.location_on_outlined,
+              Expanded(
+                child: Wrap(
+                  spacing: constraints.maxWidth*0.001,
+                  children: [
+                     Icon(Icons.location_on_outlined,size:constraints.maxHeight*0.13),
+                    Text(
+                      "Hyderabad, PK",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
               ),
-              Text(" Hyderabad,PK",
-                style: Theme.of(context).textTheme.bodySmall,
+              SizedBox(height: constraints.maxHeight*0.001),
+              Expanded(
+                child: Wrap(
+                  spacing: constraints.maxWidth*0.001,
+                  children: [
+                    Text(
+                      "Available for projects",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
               ),
-
-            ],),
-
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-
-              // Lottie.asset('animations/live_blink.json')
-                  Text(" Available for projects",
-
-                style: Theme.of(context).textTheme.bodySmall,
+              SizedBox(height: constraints.maxHeight*0.001),
+              Expanded(
+                child: Wrap(
+                  spacing: constraints.maxWidth*0.01,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon:  FaIcon(FontAwesomeIcons.github, size: constraints.maxHeight*0.2),
+                      tooltip: "GitHub",
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon:  FaIcon(FontAwesomeIcons.twitter, size: constraints.maxHeight*0.2),
+                      tooltip: "Twitter",
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon:  FaIcon(FontAwesomeIcons.whatsapp, size: constraints.maxHeight*0.2),
+                      tooltip: "WhatsApp",
+                    ),
+                  ],
+                ),
               ),
-            ],),
-          Padding(
-            padding:  EdgeInsets.symmetric(vertical:10.h),
-            child: Row(children: [
-              IconButton(onPressed: (){}, icon: const FaIcon(FontAwesomeIcons.github)
+            ],
+          ),
+      );
+    });
 
-              ),
-              IconButton(onPressed: (){}, icon: const FaIcon(FontAwesomeIcons.twitter)),
-              IconButton(onPressed: (){}, icon: const FaIcon(FontAwesomeIcons.whatsapp)),
-
-
-
-
-            ],),
-          )
-        ],
-      ),
-    );
 
   }
 }

@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lottie/lottie.dart';
-import 'package:responsive_portfolio_app/components/custom_image_widget.dart';
-import 'package:responsive_portfolio_app/components/header_body.dart';
-import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 import 'package:responsive_portfolio_app/view/about_me.dart';
-import 'package:responsive_portfolio_app/view/user_info.dart';
+import 'package:responsive_portfolio_app/view/skill_view.dart';
 
 import '../utils/responsive_layout/responsive.dart';
 class Homescreen extends StatefulWidget {
@@ -79,10 +73,22 @@ color: LightThemeColors.backgroundColor,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                      height:screenHeight*0.8,
-                      child: Center(child: ResponsiveScreen())),
-                  AboutMe(),
-                                  ],
+                      height:screenHeight*0.7,
+                      child: const Center(child: ResponsiveScreen())),
+                  SizedBox(
+                      height: screenHeight*1.6,
+                      child: const AboutMe()),
+SizedBox(
+
+  height: screenHeight*0.9,
+  child: Center(
+    child: Padding(
+      padding: EdgeInsets.symmetric(vertical:screenHeight*0.1),
+      child: const SkillView(),
+    ),
+  ),
+)
+                    ],
               ),
 
           ),

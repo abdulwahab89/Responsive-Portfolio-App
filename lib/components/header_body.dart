@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 import '../utils/responsive_layout/responsive.dart';
 
 class HeaderBody extends StatelessWidget {
@@ -10,7 +9,7 @@ class HeaderBody extends StatelessWidget {
   final EdgeInsets? padding;
   final Widget? child;
 
-  HeaderBody({
+  const HeaderBody({
     required this.header,
     required this.body,
     this.padding,
@@ -24,34 +23,39 @@ class HeaderBody extends StatelessWidget {
       builder: (context, constraints) {
         return Padding(
           padding: padding ?? EdgeInsets.zero,
-          child: Column(
-            crossAxisAlignment: Responsive.isMobile(context)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [AutoSizeText(
-                header,
-                style: Theme.of(context).textTheme.headlineLarge,
-                maxLines: 2,
-                textAlign: Responsive.isMobile(context)
-                    ? TextAlign.center
-                    : TextAlign.left,
+          child: SizedBox(
+            height: constraints.maxHeight,
+            width: constraints.maxWidth,
+            child: Column(
+              crossAxisAlignment: Responsive.isMobile(context)
+                  ? CrossAxisAlignment.center
+                  : CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [Expanded(
+                child: AutoSizeText(
+                    header,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                    maxLines: 2,
+                    textAlign: Responsive.isMobile(context)
+                        ? TextAlign.center
+                        : TextAlign.left,
+                  ),
               ),
-              SizedBox(height: 10.h),
 
-              AutoSizeText(
-                body,
-                style: Responsive.isMobile(context)
-                    ? Theme.of(context).textTheme.labelLarge
-                    : Theme.of(context).textTheme.bodyLarge,
-                maxLines: 4,
-                textAlign: Responsive.isMobile(context)
-                    ? TextAlign.center
-                    : TextAlign.left,
-              ),
-              SizedBox(height: 20.h),
-              child ?? const SizedBox(),
-            ],
+                Expanded(
+                  child: AutoSizeText(
+                    body,
+                    style: Responsive.isMobile(context)
+                        ? Theme.of(context).textTheme.bodySmall
+                        : Theme.of(context).textTheme.bodyMedium,
+                    textAlign: Responsive.isMobile(context)
+                        ? TextAlign.center
+                        : TextAlign.left,
+                  ),
+                ),
+                Expanded(child: child ?? const SizedBox()),
+              ],
+            ),
           ),
         );
       },

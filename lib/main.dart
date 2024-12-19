@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_portfolio_app/utils/appTheme.dart';
-import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
-import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 import 'package:responsive_portfolio_app/view/homeScreen.dart';
 
 void main() {
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(1280, 720),
+      designSize: const Size(1280, 720),
       minTextAdapt: true,
 builder: (context,child){
 return  MaterialApp(
@@ -24,7 +22,7 @@ return  MaterialApp(
   debugShowCheckedModeBanner: false,
   theme: ThemeData(
 
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
   color: LightThemeColors.secondarywidgetColor,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -41,7 +39,7 @@ return  MaterialApp(
   textTheme: Apptheme.getTheme(context),
   useMaterial3: true,
   ),
-  home: Homescreen()
+  home: const Homescreen()
   );
 
   },
