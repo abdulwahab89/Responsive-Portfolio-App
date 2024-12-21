@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 
 class Apptheme{
-  static TextTheme getTheme(BuildContext context){
+
+  static bool isDarkMode(BuildContext context){
+    final theme=Theme.of(context).brightness;
+    return theme==Brightness.dark;
+  }
+  static TextTheme getTheme(BuildContext context,bool isDarkMode){
+
     double h1;
     double h2;
     double h3;
@@ -14,11 +21,11 @@ class Apptheme{
     double bodyMedium;
     double bodySmall;
 if(Responsive.isMobile(context)){
-  h1=36.sp;
+  h1=50.sp;
   h2=18.sp;
   h3=24.sp;
-  subtitle=18.sp;
-  bodyLarge=15.sp;
+  subtitle=21.sp;
+  bodyLarge=25.sp;
   bodySmall=bodyLarge;
   bodyMedium=bodyLarge;
   }else{
@@ -36,37 +43,42 @@ bodySmall=12.sp;
       headlineLarge: GoogleFonts.inter(
         fontSize: h1,
         fontWeight: FontWeight.w700,
-        color: LightThemeColors.textColor,
+        color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
       ),
       labelLarge: GoogleFonts.inter(
         fontSize: subtitle,
         fontWeight: FontWeight.w400,
-        color: LightThemeColors.textColor.withOpacity(0.5),
+        color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
       ),
       headlineMedium: GoogleFonts.inter(
         fontSize: h2,
         fontWeight: FontWeight.w600,
-        color: LightThemeColors.textColor,
+        color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
+
       ),
         headlineSmall: GoogleFonts.inter(
           fontSize: h3,
           fontWeight: FontWeight.w600,
-          color: LightThemeColors.textColor,
+          color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
+
         ),
       bodyLarge: GoogleFonts.inter(
         fontSize: bodyLarge,
         fontWeight: FontWeight.w400,
-        color: LightThemeColors.textColor,
+        color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
+
       ),
       bodyMedium:  GoogleFonts.inter(
         fontSize: bodyMedium,
         fontWeight: FontWeight.w400,
-        color: LightThemeColors.textColor,
+        color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
+
       ),
       bodySmall:  GoogleFonts.inter(
         fontSize: bodySmall,
         fontWeight: FontWeight.w400,
-        color: LightThemeColors.textColor,
+        color: isDarkMode? DarkThemeColors.primaryTextColor:LightThemeColors.textColor,
+
       )
     );
   }

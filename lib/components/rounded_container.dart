@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 
+import '../utils/appTheme.dart';
 import '../utils/colors/light_theme_colors.dart';
 class RoundedContainer extends StatelessWidget{
   String title;
@@ -17,13 +19,12 @@ class RoundedContainer extends StatelessWidget{
     return  Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: LightThemeColors.widgetColor,
+            color: Apptheme.isDarkMode(context)?DarkThemeColors.secondarywidgetColor:LightThemeColors.widgetColor,
           ),
           height: height,
           width: width,
           child: Center(
             child: Text(title,
-            style:Theme.of(context).textTheme.labelSmall,
             maxLines: 1,
             ),
           ),

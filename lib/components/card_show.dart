@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -25,13 +27,15 @@ class CardShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Card(
-        child: Row(
-          children: placeImageFirst
-              ? [
-            Expanded(
-              child: Container(
-                color: LightThemeColors.widgetColor.withOpacity(0.3),
+      return Padding(
+        padding:  EdgeInsets.all(50.sp),
+        child: Card(
+          elevation: 10,
+          shadowColor: LightThemeColors.widgetColor,
+          child: Row(
+            children: placeImageFirst
+                ? [
+              Expanded(
                 child: Center(
                   child: CarouselSlider(
                     items: imageAddresses.map((imageUrl) {
@@ -40,7 +44,7 @@ class CardShow extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                           image: DecorationImage(
                             image: AssetImage(imageUrl),
-                            fit: BoxFit.fill,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       );
@@ -59,10 +63,7 @@ class CardShow extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                color:LightThemeColors.backgroundColor,
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -76,9 +77,7 @@ class CardShow extends StatelessWidget {
                       description,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: LightThemeColors.textColor.withOpacity(0.5),
-                      ),
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                     SizedBox(
                       height: constraints.maxHeight * 0.1,
@@ -93,7 +92,8 @@ class CardShow extends StatelessWidget {
                           children: List.generate(techs.length, (index) {
                             return RoundedContainer(
                               height: constraints.maxHeight * 0.1,
-                              width: constraints.maxWidth * 0.2,
+
+                              width: constraints.maxWidth * 0.05,
                               title: techs[index],
                             );
                           }),
@@ -103,14 +103,10 @@ class CardShow extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
 
-          ]
-              : [
-            Expanded(
-              child: Container(
-                color:LightThemeColors.backgroundColor,
-
+            ]
+                : [
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -125,7 +121,6 @@ class CardShow extends StatelessWidget {
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: LightThemeColors.textColor.withOpacity(0.5),
                       ),
                     ),
                     SizedBox(
@@ -139,10 +134,13 @@ class CardShow extends StatelessWidget {
                           spacing: constraints.maxWidth * 0.05,
                           alignment: WrapAlignment.start,
                           children: List.generate(techs.length, (index) {
-                            return RoundedContainer(
-                              height: constraints.maxHeight * 0.1,
-                              width: constraints.maxWidth * 0.2,
-                              title: techs[index],
+                            return Padding(
+                              padding:  EdgeInsets.all(0.1.sp),
+                              child: RoundedContainer(
+                                height: constraints.maxHeight * 0.1,
+                                width: constraints.maxWidth * 0.05,
+                                title: techs[index],
+                              ),
                             );
                           }),
                         ),
@@ -151,40 +149,40 @@ class CardShow extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                color: LightThemeColors.widgetColor.withOpacity(0.3),
-                child: Center(
-                  child: CarouselSlider(
-                    items: imageAddresses.map((imageUrl) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          image: DecorationImage(
-                            image: AssetImage(imageUrl),
-                            fit: BoxFit.fill,
+              Expanded(
+                child: Container(
+                  color: LightThemeColors.widgetColor.withOpacity(0.3),
+                  child: Center(
+                    child: CarouselSlider(
+                      items: imageAddresses.map((imageUrl) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            image: DecorationImage(
+                              image: AssetImage(imageUrl),
+                              fit: BoxFit.contain,
+                            ),
                           ),
-                        ),
-                      );
-                    }).toList(),
-                    options: CarouselOptions(
-                      enlargeFactor: 4,
-                      height: constraints.maxHeight,
-                      enlargeCenterPage: true,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 3),
-                      autoPlayAnimationDuration:
-                      const Duration(milliseconds: 800),
-                      pauseAutoPlayOnManualNavigate: true,
-                      scrollPhysics: const BouncingScrollPhysics(),
+                        );
+                      }).toList(),
+                      options: CarouselOptions(
+                        enlargeFactor: 4,
+                        height: constraints.maxHeight,
+                        enlargeCenterPage: true,
+                        autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
+                        pauseAutoPlayOnManualNavigate: true,
+                        scrollPhysics: const BouncingScrollPhysics(),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-          ],
+            ],
+          ),
         ),
       );
     });

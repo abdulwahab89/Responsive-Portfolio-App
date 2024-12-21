@@ -13,28 +13,23 @@ class WorkView extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context,constraints){
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: constraints.maxHeight*0.05),
-            child: Center(
-              child: RoundedContainer(
-                  height:constraints.maxHeight*0.03,
-                  width:constraints.maxWidth*0.1,
-                  title: "Work"),
-
-            ),
+            padding:  EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
+            child: RoundedContainer(
+                height:constraints.maxHeight*0.03,
+                width:constraints.maxWidth*0.1,
+                title: "Work"),
           ),
-          Center(child: Text("Here's a view of my projects:",
+          Text("Here's a view of my projects:",
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               color: LightThemeColors.secondarywidgetColor,
             ),
-          )),
-          SizedBox(
-
-            height: constraints.maxHeight*0.6,
-            width: constraints.maxWidth*0.6,
+          ),
+          Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
                 child: CardShow(
@@ -91,12 +86,10 @@ class WorkView extends StatelessWidget {
                   ],
                 ),
               ),
-
+            
             ],
+            ),
           ),
-          ),
-
-
         ],
       );
     });

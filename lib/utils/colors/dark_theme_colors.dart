@@ -12,5 +12,7 @@ class DarkThemeColors{
   static const Color darkColor=Color(0xff9ca3af);
   static const Color deepDarkColor=Color(0xffd1d5db);
   static const Color textColor=Color(0xffe5e7eb);
+  static const Color primaryTextColor=Color(0xffffffff);
+
 }
 const Color emeraldColor=Color(0xff10b981);

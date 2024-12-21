@@ -28,20 +28,17 @@ class _SkillViewState extends State<SkillView> {
                 child: Padding(
                   padding:  EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
                   child: RoundedContainer(
-                    height: constraints.maxHeight * 0.05,
+                    height: constraints.maxHeight * 0.07,
                     width: constraints.maxWidth * 0.1,
                     title: 'Skills',
                   ),
                 ),
               ),
-              Padding(
-                padding:  EdgeInsets.symmetric(vertical: constraints.maxHeight*0.1),
-                child: Center(child: Text("The skills, tools and technologies, I have used:",
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: LightThemeColors.secondarywidgetColor,
-                ),
-                )),
+              Center(child: Text("The skills, tools and technologies, I have used:",
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: LightThemeColors.secondarywidgetColor,
               ),
+              )),
               Center(
                 child: Wrap(
                   children: List.generate(12, (index) {

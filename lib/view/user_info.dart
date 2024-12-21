@@ -18,9 +18,10 @@ class _UserInfoState extends State<UserInfo> {
         height: constraints.maxHeight,
         width: constraints.maxWidth,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
+              Flexible(
                 child: Wrap(
                   spacing: constraints.maxWidth*0.001,
                   children: [
@@ -32,7 +33,6 @@ class _UserInfoState extends State<UserInfo> {
                   ],
                 ),
               ),
-              SizedBox(height: constraints.maxHeight*0.001),
               Expanded(
                 child: Wrap(
                   spacing: constraints.maxWidth*0.001,
@@ -44,24 +44,22 @@ class _UserInfoState extends State<UserInfo> {
                   ],
                 ),
               ),
-              SizedBox(height: constraints.maxHeight*0.001),
-              Expanded(
+              Flexible(
                 child: Wrap(
-                  spacing: constraints.maxWidth*0.01,
                   children: [
                     IconButton(
                       onPressed: () {},
-                      icon:  FaIcon(FontAwesomeIcons.github, size: constraints.maxHeight*0.2),
+                      icon:  FaIcon(FontAwesomeIcons.github, size: Theme.of(context).textTheme.bodyLarge!.fontSize),
                       tooltip: "GitHub",
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon:  FaIcon(FontAwesomeIcons.twitter, size: constraints.maxHeight*0.2),
+                      icon:  FaIcon(FontAwesomeIcons.twitter, size: Theme.of(context).textTheme.bodyLarge!.fontSize),
                       tooltip: "Twitter",
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon:  FaIcon(FontAwesomeIcons.whatsapp, size: constraints.maxHeight*0.2),
+                      icon:  FaIcon(FontAwesomeIcons.whatsapp, size: Theme.of(context).textTheme.bodyLarge!.fontSize),
                       tooltip: "WhatsApp",
                     ),
                   ],

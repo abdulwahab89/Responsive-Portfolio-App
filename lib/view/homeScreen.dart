@@ -1,12 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:responsive_portfolio_app/logic/section_navigator.dart';
+import 'package:responsive_portfolio_app/logic/theme_switcher.dart';
+import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 import 'package:responsive_portfolio_app/view/about_me.dart';
 import 'package:responsive_portfolio_app/view/footer_view.dart';
 import 'package:responsive_portfolio_app/view/skill_view.dart';
 import 'package:responsive_portfolio_app/view/work_view.dart';
 
+import '../utils/appTheme.dart';
 import '../utils/responsive_layout/responsive.dart';
 import 'education_view.dart';
 class Homescreen extends StatefulWidget {
@@ -17,8 +22,20 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  // ScrollController to manage scrolling
+  final ScrollController _scrollController = ScrollController();
+
+  // GlobalKeys to identify sections
+  final GlobalKey _aboutKey = GlobalKey();
+  final GlobalKey _workKey = GlobalKey();
+
+  final GlobalKey _educationKey = GlobalKey();
+  final GlobalKey _contactKey = GlobalKey();
+  final GlobalKey _homeKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    final themeModeProvider=Provider.of<ThemeSwitcher>(context);
     double screenWidth=MediaQuery.of(context).size.width;
     double screenHeight=MediaQuery.of(context).size.height;
 
@@ -31,9 +48,9 @@ title:  const Text('Mobile'),
       elevation: 0,
       flexibleSpace: ClipRect(
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0), // Frosted effect
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           child: Container(
-            color: Colors.white.withOpacity(0.3), // Transparent white tint
+            color: Colors.white.withOpacity(0.3),
           ),
         ),
       ),
@@ -50,11 +67,11 @@ TextButton(onPressed: (){}, child: Text('About',
 style:Theme.of(context).textTheme.titleMedium,
 )),
 
-        TextButton(onPressed: (){}, child: Text('Work',
+        TextButton(onPressed: ()=>scrollToSection(_scrollController, _workKey), child: Text('Work',
           style:Theme.of(context).textTheme.titleMedium,
         )),
 
-        TextButton(onPressed: (){}, child: Text('Education',
+        TextButton(onPressed: ()=>scrollToSection(_scrollController, _educationKey), child: Text('Education',
           style:Theme.of(context).textTheme.titleMedium,
         )),
 
@@ -67,35 +84,42 @@ style:Theme.of(context).textTheme.titleMedium,
             color: LightThemeColors.widgetColor,
           ),
         ),
-        IconButton(onPressed: (){}, icon: const Icon(Icons.dark_mode_outlined),
+        IconButton(onPressed:() {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            themeModeProvider.setMode();
+          });
+        }, icon: const Icon(Icons.dark_mode_outlined),
         ),
         Padding(
           padding:  EdgeInsets.all(screenWidth*0.01),
           child: ElevatedButton(onPressed: (){},
-           child:Text('Download CV',
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-color: LightThemeColors.backgroundColor,
-          ),
+            child:Text('Download CV',
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+
+                color: themeModeProvider.isDark?Colors.black:Colors.white,
+              ),
           ),
           ),
         ),
-
               ],
-
     ),
       body:  SingleChildScrollView(
+        controller: _scrollController,
               child:Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                      height:screenHeight*0.9,
-                      child: const Center(child: ResponsiveScreen())),
-                  SizedBox(
-                      height: screenHeight*1.6,
+                    key:_homeKey,
+                      height:screenHeight*0.95,
+                      child: const ResponsiveScreen()),
+                  Container(
+                      color: Apptheme.isDarkMode(context)?DarkThemeColors.widgetColor:LightThemeColors.widgetColor.withOpacity(0.3),
+
+                      height: screenHeight*1.2,
                       child: const AboutMe()),
 SizedBox(
-
+  key: _aboutKey,
   height: screenHeight*0.9,
   child: Center(
     child: Padding(
@@ -106,7 +130,8 @@ SizedBox(
 ),
 
                   Container(
-color: LightThemeColors.widgetColor.withOpacity(0.3),
+                    key: _educationKey,
+color: Apptheme.isDarkMode(context)?DarkThemeColors.widgetColor:LightThemeColors.widgetColor.withOpacity(0.3),
                     height: screenHeight*1.2,
                     child: Center(
                       child: Padding(
@@ -117,13 +142,13 @@ color: LightThemeColors.widgetColor.withOpacity(0.3),
                   ),
 
                   SizedBox(
-                    
+                    key: _workKey,
                     height: screenHeight*2  ,
 child: Center(child: WorkView()),
                   ),
 
                   SizedBox(
-
+                    key: _contactKey,
                     height: screenHeight*0.5  ,
                     child: const Center(child: FooterView()),
                   ),
