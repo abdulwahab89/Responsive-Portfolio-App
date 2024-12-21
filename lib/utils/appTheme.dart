@@ -18,15 +18,15 @@ if(Responsive.isMobile(context)){
   h2=18.sp;
   h3=24.sp;
   subtitle=18.sp;
-  bodyLarge=16.sp;
-  bodySmall=10.sp;
-  bodyMedium=20.sp;
+  bodyLarge=15.sp;
+  bodySmall=bodyLarge;
+  bodyMedium=bodyLarge;
   }else{
   bodyLarge=18.sp;
 bodyMedium=16.sp;
-bodySmall=14.sp;
+bodySmall=12.sp;
 
-  subtitle=20.sp;
+  subtitle=12.sp;
   h1=60.sp;
   h2=36.sp;
   h3=30.sp;
@@ -41,7 +41,7 @@ bodySmall=14.sp;
       labelLarge: GoogleFonts.inter(
         fontSize: subtitle,
         fontWeight: FontWeight.w400,
-        color: LightThemeColors.textColor,
+        color: LightThemeColors.textColor.withOpacity(0.5),
       ),
       headlineMedium: GoogleFonts.inter(
         fontSize: h2,

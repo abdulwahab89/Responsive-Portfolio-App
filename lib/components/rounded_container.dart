@@ -23,8 +23,8 @@ class RoundedContainer extends StatelessWidget{
           width: width,
           child: Center(
             child: Text(title,
-            style:Theme.of(context).textTheme.bodySmall,
-            
+            style:Theme.of(context).textTheme.labelSmall,
+            maxLines: 1,
             ),
           ),
         );
