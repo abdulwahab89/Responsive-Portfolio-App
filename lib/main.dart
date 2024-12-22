@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_portfolio_app/logic/theme_switcher.dart';
-import 'package:responsive_portfolio_app/model/user_info.dart';
 import 'package:responsive_portfolio_app/utils/appTheme.dart';
 import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';

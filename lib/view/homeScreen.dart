@@ -194,9 +194,7 @@ style:Theme.of(context).textTheme.titleMedium,
 SizedBox(
   key: _skillKey,
   height: screenHeight*0.9,
-  child: Center(
-    child: const SkillView(),
-  ),
+  child: const SkillView(),
 ),
 
                   Container(
@@ -211,7 +209,7 @@ color: Apptheme.isDarkMode(context)?DarkThemeColors.widgetColor:LightThemeColors
                   SizedBox(
                     key: _workKey,
                     height: screenHeight*2  ,
-child: Center(child: WorkView()),
+child: WorkView(),
                   ),
 
                   SizedBox(

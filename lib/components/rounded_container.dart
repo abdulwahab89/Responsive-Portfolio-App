@@ -26,10 +26,10 @@ class RoundedContainer extends StatelessWidget{
           width: width,
           child: Center(
             child: AutoSizeText(title,
+            textAlign: TextAlign.center,
             maxLines: 1,
             style: Theme.of(context).textTheme.labelSmall,
             ),
-
           ),
         );
   }

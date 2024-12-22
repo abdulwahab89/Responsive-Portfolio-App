@@ -15,16 +15,13 @@ class WorkView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Flexible(
-              child: Padding(
-                padding:  EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
-                child: RoundedContainer(
-                  height: constraints.maxHeight * 0.03,
-                  width: constraints.maxWidth * 0.1,
-                  title: "Work",
-                ),
+              child: RoundedContainer(
+                height: constraints.maxHeight * 0.03,
+                width: constraints.maxWidth * 0.1,
+                title: "Work",
               ),
             ),
             Flexible(
@@ -35,7 +32,8 @@ class WorkView extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(flex: 4,
+            SizedBox(height: constraints.maxHeight*0.01,),
+            Expanded(
               child: CardShow(
                 imageAddresses: imageUrls,
                 placeImageFirst: true,
@@ -44,25 +42,34 @@ class WorkView extends StatelessWidget {
                 techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
               ),
             ),
-            Expanded(flex: 4,
+            Expanded(
+              child: CardShow(
+                imageAddresses: imageUrls,
+                title: 'Wiggle',
+                description:
+                "A platform for accessing real-time open banking and energy data to help you grow your business, backed with scalable back-end infrastructure.",
+                techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
+              ),
+            ),
+            Expanded(
               child: CardShow(
                 imageAddresses: imageUrls,
                 placeImageFirst: true,
                 title: 'Wiggle',
-                description: "It is a good event",
+                description:
+                "A platform for accessing real-time open banking and energy data to help you grow your business, backed with scalable back-end infrastructure.",
                 techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
               ),
             ),
-            Expanded(flex: 4,
+            Expanded(
               child: CardShow(
                 imageAddresses: imageUrls,
-                placeImageFirst: true,
                 title: 'Wiggle',
-                description: "It is a good event",
+                description:
+                "A platform for accessing real-time open banking and energy data to help you grow your business, backed with scalable back-end infrastructure.",
                 techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
               ),
             ),
-
           ],
         );
       },
