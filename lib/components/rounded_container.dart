@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
@@ -24,9 +25,11 @@ class RoundedContainer extends StatelessWidget{
           height: height,
           width: width,
           child: Center(
-            child: Text(title,
+            child: AutoSizeText(title,
             maxLines: 1,
+            style: Theme.of(context).textTheme.labelSmall,
             ),
+
           ),
         );
   }

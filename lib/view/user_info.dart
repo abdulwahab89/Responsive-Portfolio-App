@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:responsive_portfolio_app/logic/url_launcher.dart';
+import 'package:responsive_portfolio_app/model/user_info.dart';
+import 'package:responsive_portfolio_app/utils/data.dart';
 class UserInfo extends StatefulWidget {
   final EdgeInsets? padding;
-
-  const UserInfo({this.padding, super.key});
+ProfileInfo? profileInfo;
+    UserInfo({
+    required this.profileInfo,
+    this.padding, super.key});
 
   @override
   State<UserInfo> createState() => _UserInfoState();
@@ -13,6 +18,7 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   @override
   Widget build(BuildContext context) {
+
     return LayoutBuilder(builder: (context, constraints){
       return SizedBox(
         height: constraints.maxHeight,
@@ -27,7 +33,7 @@ class _UserInfoState extends State<UserInfo> {
                   children: [
                      Icon(Icons.location_on_outlined,size:constraints.maxHeight*0.13),
                     Text(
-                      "Hyderabad, PK",
+                      profileInfo.location!,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
@@ -48,12 +54,12 @@ class _UserInfoState extends State<UserInfo> {
                 child: Wrap(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => UrlLauncher.navigateUrl(profileInfo.socialUrls[Platforms.gitHubUrl]!,context),
                       icon:  FaIcon(FontAwesomeIcons.github, size: Theme.of(context).textTheme.bodyLarge!.fontSize),
                       tooltip: "GitHub",
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => UrlLauncher.navigateUrl(profileInfo.socialUrls[Platforms.twitterUrl]!,context ),
                       icon:  FaIcon(FontAwesomeIcons.twitter, size: Theme.of(context).textTheme.bodyLarge!.fontSize),
                       tooltip: "Twitter",
                     ),

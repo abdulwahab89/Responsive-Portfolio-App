@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
-class CustomCard extends StatelessWidget {
 
+import '../utils/appTheme.dart';
+class CustomCard extends StatelessWidget {
 String title;
 String trailing;
 
@@ -16,45 +16,31 @@ List<String> texts=[];
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context,constraints){
-      return     Padding(
-        padding:  EdgeInsets.all(10.sp),
-        child: Card (
-          child: ListTile(
-            title:  SizedBox(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(title,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-
-                  ),
-                  const Spacer(),
-                  Text(trailing.toString(),
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
+      return     Card(
+        color: Apptheme.isDarkMode(context)? null:LightThemeColors.backgroundColor,
+        child: ListTile(
+          leading: const FaIcon(FontAwesomeIcons.book),
+          title:  Text(title,
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            subtitle:Column(
-              children:texts.map((item) {
-                return Flexible(
-                  child: Row(
-                    children: [
-                       Icon(Icons.circle, size: constraints.maxWidth*0.01,),
-                      SizedBox(width: constraints.maxWidth*0.01,),
-                      Flexible(
-                        child: Text(item.toString(),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
+          trailing:  Text(trailing,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              fontWeight: FontWeight.bold,
             ),
           ),
+
+          subtitle: Align(
+              alignment: Alignment.topLeft,
+              child: Wrap(
+                spacing: constraints.maxWidth*0.01,
+                children: List.generate(texts.length, (index){
+                  return Text("*${texts[index]}",
+                  style: Theme.of(context).textTheme.labelSmall,
+                  );
+                })
+              )),
         ),
       );
 

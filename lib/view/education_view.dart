@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hovering/hovering.dart';
 import 'package:responsive_portfolio_app/components/custom_card.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
+import 'package:responsive_portfolio_app/utils/data.dart';
 import '../components/rounded_container.dart';
 class EducationView extends StatefulWidget {
   const EducationView({super.key});
@@ -16,63 +19,51 @@ class _EducationViewState extends State<EducationView> {
     return LayoutBuilder(
 
       builder: (context, constraints) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: RoundedContainer(
-                height: constraints.maxHeight * 0.05,
-                width: constraints.maxWidth * 0.1,
-                title: 'Education',
-              ),
-            ),
-            Center(child: Text("The relevant courses, I have attended:",
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: LightThemeColors.secondarywidgetColor,
-              ),
-            )),
-
-        Expanded(
+        return SizedBox(
+          height: constraints.maxHeight,
+          
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-          
-              Flexible(
-                child: CustomCard(
-                    trailing: "2021-2025",
-                    title: "Mobile Application Development",
-                          
-                    texts: ["lorem empsum"]),
+              SizedBox(
+                height:constraints.maxHeight*0.05,
               ),
-              Flexible(
-                child: CustomCard(
-                    trailing: "2021-2025",
-                    title: "Mobile Application Development",
-                    texts: ["lorem empsum",
-                      "lorem empsum",
-                      "lorem empsum",
-                      "lorem empsum",
-                      "lorem empsum",
-                    ]),
+              SizedBox(
+                height: constraints.maxHeight*0.05,
+                width: constraints.maxWidth*0.1,
+                child: RoundedContainer(
+                  title: 'Education',
+                ),
               ),
-          
-          
-              Flexible(
-                child: CustomCard(
-                    trailing: "2021-2025",
-                    title: "Mobile Application Development",
-                    texts: ["lorem empsum",
-                      "lorem empsum",
-                      "lorem empsum",
-                      "lorem empsum",
-                          
-                    ]),
+              Center(
+                child: SizedBox(
+                  height: constraints.maxHeight*0.15,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
+                    child: Text("The relevant courses, I have attended:",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: LightThemeColors.secondarywidgetColor,
+                      ),
+                    ),
+                  ),
+                ),
               ),
+          Expanded(
+            child: Column(
+                        children: List.generate(educationList.length, (index){
+            var educationItem=educationList[index];
+            return Expanded(child: HoverContainer(
+              hoverColor: Colors.yellow,
+                padding: EdgeInsets.symmetric(vertical: constraints.maxHeight*0.015),
+                hoverPadding: EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
+
+                child: CustomCard(trailing:educationItem.dateCompleted?? "No date", title: educationItem.courseName?? "No course", texts: educationItem.details??["No details"])));
+                        })
+                      ),
+          )
             ],
           ),
-        ),
-
-          ],
         );
       },
     );

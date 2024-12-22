@@ -1,10 +1,14 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_portfolio_app/components/rounded_container.dart';
 import 'package:flutter/services.dart';  // Import the services package for clipboard functionality
+import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 
+import '../logic/copy_details.dart';
+import '../utils/appTheme.dart';
 import '../utils/colors/light_theme_colors.dart';
 
 class FooterView extends StatefulWidget {
@@ -15,16 +19,7 @@ class FooterView extends StatefulWidget {
 }
 
 class _FooterViewState extends State<FooterView> {
-  // Function to copy text to clipboard
-  Future<void> _copyToClipboard(String text) async {
-    await Clipboard.setData(ClipboardData(text: text));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Copied to clipboard!'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,17 +61,17 @@ class _FooterViewState extends State<FooterView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () => _copyToClipboard("askyourmom@gmail.com"),
+                        onTap: () => copyToClipboard("abdulwahablaghari6@gmail.com",context),
                         child: Row(
                           children: [
                             Text(
-                              "askyourmom@gmail.com",
+                              "abdulwahablaghari6@gmail.com ",
                               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                 color: Colors.blue,
                                 decoration: TextDecoration.underline,
                               ),
                             ),
-                            Icon(
+                            const Icon(
                               Icons.copy,
                               color: Colors.blue,
                             ),
@@ -85,11 +80,11 @@ class _FooterViewState extends State<FooterView> {
                       ),
                       SizedBox(width: 20), // Adding space between the email and phone number
                       GestureDetector(
-                        onTap: () => _copyToClipboard("+92 8980500565"),
+                        onTap: () => copyToClipboard("+92 3083598729",context),
                         child: Row(
                           children: [
                             Text(
-                              "+92 8980500565",
+                              "+92 3083598729 ",
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                             Icon(
@@ -107,26 +102,18 @@ class _FooterViewState extends State<FooterView> {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.02),
-            child: SizedBox(
+            child: Container(
+              color: Apptheme.isDarkMode(context)?DarkThemeColors.secondarywidgetColor:LightThemeColors.widgetColor.withOpacity(0.3),
               height: constraints.maxHeight * 0.2,
               child: Center(
-                child: AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      'Made with Flutter and love by AWAHAB',
-                      textStyle: GoogleFonts.roboto(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                      speed: const Duration(milliseconds: 100),
-                    ),
-                  ],
-                  repeatForever: true,
-                ),
-              ),
+ child: Text("© 2024 | Designed and coded with ❤️ by A Wahab️",
+
+ style: Theme.of(context).textTheme.labelLarge,
+ ),
+      ),
+      ),
             ),
-          ),
+
         ],
       );
     });

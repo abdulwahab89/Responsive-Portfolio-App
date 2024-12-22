@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_portfolio_app/components/rounded_container.dart';
+import 'package:responsive_portfolio_app/model/user_info.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
+import 'package:responsive_portfolio_app/utils/data.dart';
 import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 
 import '../components/custom_image_widget.dart';
 import '../components/header_body.dart';
 class AboutMe extends StatefulWidget {
-  const AboutMe({super.key});
+  ProfileInfo? profileInfo;
+   AboutMe({
+    required this.profileInfo,
+    super.key});
 
   @override
   State<AboutMe> createState() => _AboutMeState();
@@ -52,14 +57,7 @@ class _AboutMeState extends State<AboutMe> {
                     child: HeaderBody(
                       headerStyle: Theme.of(context).textTheme.headlineSmall,
                       header: "Curious about me? Here you have it:",
-                      body: '''
-                                      Contrary to popular belief, Lorem Ipsum is not simply random text. 
-                                      It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, "consectetur", from a Lorem Ipsum passage. Going through the citations of the word in classical literature, he discovered the undoubtable source.
-                                  
-                                      Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                                  
-                                      The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-                                      ''',
+                      body: profileInfo.about!,
                      ),
                   )
 

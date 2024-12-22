@@ -12,7 +12,7 @@ void scrollToSection(ScrollController scrollController,GlobalKey key) {
       curve: Curves.easeInOut,
     );
   } else {
-    debugPrint('Context is null. Ensure the widget is in the widget tree.');
+    debugPrint('Something wrong hapen');
   }
 }
 

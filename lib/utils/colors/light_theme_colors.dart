@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../appTheme.dart';
 class LightThemeColors{
   static const Color backgroundColor=Color(0xffFFFFFF);
   static const Color primaryColor=Color(0xffe5e7eb);
@@ -11,4 +13,9 @@ class LightThemeColors{
   static const Color darkColor=Color(0xff1f2937);
   static const Color deepDarkColor=Color(0xff111827);
   static const Color textColor=Color(0xff030712);
+}
+
+getHoverColor(BuildContext context){
+   Color hoverColor= Apptheme.isDarkMode(context)? const Color(0xffffffffc):const Color(0xff000000);
+return hoverColor;
 }

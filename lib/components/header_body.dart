@@ -32,7 +32,8 @@ final MainAxisAlignment? mainAxisAlignment;
                 ? CrossAxisAlignment.center
                 : CrossAxisAlignment.start,
             mainAxisAlignment: mainAxisAlignment??MainAxisAlignment.start,
-            children: [Flexible(
+            children: [SizedBox(
+              height: constraints.maxHeight*0.15,
               child: AutoSizeText(
                   header,
                   style: headerStyle??Theme.of(context).textTheme.headlineLarge,
@@ -42,16 +43,18 @@ final MainAxisAlignment? mainAxisAlignment;
                       : TextAlign.left,
                 ),
             ),
-              SizedBox(height: constraints.maxHeight*0.01),
-              Flexible(
-                child: AutoSizeText(
-                  body,
-                  style: Responsive.isMobile(context)
-                      ? Theme.of(context).textTheme.bodyLarge
-                      : Theme.of(context).textTheme.bodyLarge,
-                  textAlign: Responsive.isMobile(context)
-                      ? TextAlign.center
-                      : TextAlign.justify,
+              Expanded(
+                child: Padding(
+                  padding:  EdgeInsets.all(10.sp),
+                  child: AutoSizeText(
+                    body,
+                    style: Responsive.isMobile(context)
+                        ? Theme.of(context).textTheme.bodyLarge
+                        : Theme.of(context).textTheme.bodyLarge,
+                    textAlign: Responsive.isMobile(context)
+                        ? TextAlign.center
+                        : TextAlign.justify,
+                  ),
                 ),
               ),
               child!=null? Flexible(child: child!) :const SizedBox(),
