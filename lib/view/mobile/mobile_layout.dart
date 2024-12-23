@@ -14,8 +14,8 @@ class MobileLayout extends StatefulWidget {
 class _MobileLayoutState extends State<MobileLayout> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight=MediaQuery.of(context).size.height;
-    double screenWidth=MediaQuery.of(context).size.width;
+    // double screenHeight=MediaQuery.of(context).size.height;
+    // double screenWidth=MediaQuery.of(context).size.width;
 return LayoutBuilder(builder: (context,constraints){
   return   Column(
     crossAxisAlignment: CrossAxisAlignment.center,

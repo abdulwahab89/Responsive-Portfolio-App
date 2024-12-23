@@ -19,7 +19,7 @@ class WorkView extends StatelessWidget {
           children: [
             Flexible(
               child: Padding(
-                padding:  EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
+                padding:  EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01 ),
                 child: RoundedContainer(
                   height: constraints.maxHeight * 0.03,
                   width: constraints.maxWidth * 0.1,

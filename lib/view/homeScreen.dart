@@ -110,7 +110,11 @@ const Divider(),
      ),
       extendBodyBehindAppBar: true,
     appBar: Responsive.isMobile(context)? AppBar(
-title:  const Text('Mobile'),
+title:   Text('<AW/>',
+  style: Theme.of(context).textTheme.headlineLarge  !.copyWith(
+    fontWeight: FontWeight.bold,
+  ),
+),
     ):AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -214,8 +218,8 @@ child: WorkView(),
 
                   SizedBox(
                     key: _contactKey,
-                    height: screenHeight*0.5  ,
-                    child: const Center(child: FooterView()),
+                    height: screenHeight*0.5,
+                    child:  Center(child: FooterView(email:'abdulwahablaghari6@gmail.com',phNumber: '+923083598729',)),
                   ),
                 ],
               ),
