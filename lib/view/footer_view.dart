@@ -79,6 +79,7 @@ class _FooterViewState extends State<FooterView> {
               ),
             ),
           ),
+
           Expanded(
             child: ListTile(
               contentPadding: EdgeInsets.zero,
@@ -97,6 +98,7 @@ class _FooterViewState extends State<FooterView> {
                       onPressed: () => copyToClipboard(widget.phNumber, context),
                       icon: const Icon(Icons.copy_outlined),
                       padding: EdgeInsets.zero,
+
                       constraints: const BoxConstraints(),
                     ),
                   ),

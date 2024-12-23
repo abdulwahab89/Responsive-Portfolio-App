@@ -1,0 +1,36 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main  # Trigger deploy on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify your Node.js version
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Build project
+        run: |
+          npm run build  # Replace with the build command for your project (if needed)
+
+      - name: Firebase CLI setup
+        run: |
+          curl -sL https://firebase.tools | bash
+
+      - name: Deploy to Firebase
+        run: |
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+
