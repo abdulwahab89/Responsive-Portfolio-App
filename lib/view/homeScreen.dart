@@ -80,24 +80,49 @@ bool isHover=false;
                trailing: IconButton(onPressed: ()=> Navigator.pop(context), icon: const Icon(Icons.close_outlined)),
              ),
  const Divider(),
- const HoverText(
+  HoverText(
+ onPressed: (){scrollToSection(_scrollController,_homeKey);},
    text:'Home',
 ),
-             const HoverText(
+              HoverText(
+onPressed: (){scrollToSection(_scrollController, _aboutKey);
+  Navigator.pop(context);
+
+},
                text:'About',
              ),
-             const HoverText(
+ HoverText(
+               onPressed: (){
+
+                 Navigator.pop(context);
+                 scrollToSection(_scrollController,_skillKey);},
+
                text:'Skills',
              ),
-             const HoverText(
+HoverText(
+               onPressed: (){scrollToSection(_scrollController,_educationKey);
+
+               Navigator.pop(context);
+                 },
+
                text:'Education',
              ),
-             const HoverText(
+ HoverText(
                text:'Work',
-             ),
+   onPressed: (){
 
-             const HoverText(
-               text:'Contact',
+     Navigator.pop(context);
+                 scrollToSection(_scrollController,_workKey);},
+
+ ),
+
+              HoverText(
+                onPressed: (){
+                  Navigator.pop(context);
+
+                  scrollToSection(_scrollController,_contactKey);},
+
+                text:'Contact',
 
              ),
 const Divider(),

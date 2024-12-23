@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:responsive_portfolio_app/logic/url_launcher.dart';
 import 'package:responsive_portfolio_app/model/user_info.dart';
 import 'package:responsive_portfolio_app/data/data.dart';
@@ -44,6 +45,7 @@ class _UserInfoState extends State<UserInfo> {
                 child: Wrap(
                   spacing: constraints.maxWidth*0.001,
                   children: [
+                   Lottie.asset('animations/live_blink.json'),
                     Text(
                       "Available for projects",
                       style: Theme.of(context).textTheme.bodySmall,

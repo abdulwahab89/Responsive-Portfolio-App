@@ -7,12 +7,13 @@ import '../utils/appTheme.dart';
 class HoverText extends StatefulWidget {
   final String text;
   final Color defaultColor;
-   VoidCallback? get onPressed => (){};
+  VoidCallback? onPressed;
   final double? padding;
-   const HoverText({
+    HoverText({
     super.key,
     this.padding,
     required this.text,
+     required this.onPressed,
     this.defaultColor = Colors.black,
   });
 
