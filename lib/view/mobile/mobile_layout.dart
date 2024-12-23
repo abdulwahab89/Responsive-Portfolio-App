@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 import 'package:responsive_portfolio_app/view/user_info.dart';
 
 import '../../components/custom_image_widget.dart';
@@ -21,15 +21,20 @@ return LayoutBuilder(builder: (context,constraints){
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Flexible(
+      SizedBox(
+        height: constraints.maxHeight*0.15,
+      ),
+      Expanded(
+        flex: 2,
         child: CustomImageWidget(
+          height: constraints.maxHeight*0.5,
           width: constraints.maxWidth*0.4,
-          height: constraints.maxHeight*0.7,
         ),
       ),
-      Flexible(
+      Expanded(
+        flex: 2 ,
         child: HeaderBody(
-          header: "Hi, I'm Wahab ", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata.",
+          header: profileInfo.title!, body: profileInfo.intro!,
           child: UserInfo(
 profileInfo: profileInfo,
            )),

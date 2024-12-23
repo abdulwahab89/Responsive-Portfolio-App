@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_portfolio_app/logic/url_launcher.dart';
 import 'package:responsive_portfolio_app/model/user_info.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
+import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 class UserInfo extends StatefulWidget {
   final EdgeInsets? padding;
-ProfileInfo? profileInfo;
-    UserInfo({
+final ProfileInfo? profileInfo;
+    const UserInfo({
     required this.profileInfo,
     this.padding, super.key});
 
@@ -25,7 +25,7 @@ class _UserInfoState extends State<UserInfo> {
         width: constraints.maxWidth,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: Responsive.isMobile(context)?CrossAxisAlignment.center:CrossAxisAlignment.start,
             children: [
               Flexible(
                 child: Wrap(
@@ -39,7 +39,8 @@ class _UserInfoState extends State<UserInfo> {
                   ],
                 ),
               ),
-              Expanded(
+              SizedBox(
+                height: constraints.maxHeight*0.1,
                 child: Wrap(
                   spacing: constraints.maxWidth*0.001,
                   children: [
@@ -50,7 +51,7 @@ class _UserInfoState extends State<UserInfo> {
                   ],
                 ),
               ),
-              Flexible(
+              Expanded(
                 child: Wrap(
                   children: [
                     IconButton(

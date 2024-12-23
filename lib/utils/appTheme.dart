@@ -5,7 +5,7 @@ import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 
-class Apptheme{
+class AppTheme{
 
   static bool isDarkMode(BuildContext context){
     final theme=Theme.of(context).brightness;
@@ -22,8 +22,8 @@ class Apptheme{
     double bodySmall;
 if(Responsive.isMobile(context)){
   h1=50.sp;
-  h2=18.sp;
-  h3=24.sp;
+  h2=25.sp;
+  h3=35.sp;
   subtitle=21.sp;
   bodyLarge=25.sp;
   bodySmall=bodyLarge;

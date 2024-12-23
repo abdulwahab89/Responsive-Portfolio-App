@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 import '../utils/responsive_layout/responsive.dart';
 
 class HeaderBody extends StatelessWidget {

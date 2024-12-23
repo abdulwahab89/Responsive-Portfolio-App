@@ -6,6 +6,7 @@ get isDark=> _isDark;
 setMode(){
   _isDark=!_isDark;
   notifyListeners();
+
 }
 
 

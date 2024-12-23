@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 
 import '../../view/mobile/mobile_layout.dart';
 import '../../view/web/desktop_layout.dart';
@@ -19,9 +19,9 @@ class ResponsiveScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context,constraints){
       if (Responsive.isMobile(context)) {
-        return const MobileLayout(); // Mobile layout
+        return const MobileLayout();
       } else {
-        return  DesktopLayout(profileInfo:profileInfo,); // Desktop layout
+        return  DesktopLayout(profileInfo:profileInfo,);
       }
     });
   }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hovering/hovering.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
-import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 
 import '../components/rounded_container.dart';
 class SkillView extends StatefulWidget {

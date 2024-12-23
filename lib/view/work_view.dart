@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_portfolio_app/components/rounded_container.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 import '../components/card_show.dart';
 import '../utils/colors/light_theme_colors.dart';
 
 class WorkView extends StatelessWidget {
   WorkView({super.key});
-  List<String> imageUrls = List.generate(12, (index) {
+  final List<String> imageUrls = List.generate(12, (index) {
     return 'images/techs/images(${index + 1}).png';
   });
 
@@ -35,33 +35,32 @@ class WorkView extends StatelessWidget {
                 ),
               ),
             ),
+
             Expanded(flex: 4,
               child: CardShow(
-                imageAddresses: imageUrls,
+                imageAddresses: projects[0].projectUrls??[""],
                 placeImageFirst: true,
-                title: 'Wiggle',
-                description: "It is a good event",
-                techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
-              ),
+                title: projects[0].projectTitle.toString(),
+                description: projects[0].description.toString()
+               ),
             ),
             Expanded(flex: 4,
               child: CardShow(
-                imageAddresses: imageUrls,
+                imageAddresses: projects[1].projectUrls??[""],
                 placeImageFirst: true,
-                title: 'Wiggle',
-                description: "It is a good event",
-                techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
-              ),
+                title: projects[1].projectTitle??" Not given",
+                description: projects[1].description??"Not given",
+                ),
             ),
             Expanded(flex: 4,
               child: CardShow(
-                imageAddresses: imageUrls,
+                imageAddresses: projects[2].projectUrls??[""],
                 placeImageFirst: true,
-                title: 'Wiggle',
-                description: "It is a good event",
-                techs: const ["NodeJS", "Flutter", "Dart", "HTML"],
-              ),
+                title: projects[2].projectTitle.toString(),
+                description: projects[2].description.toString(),
+                ),
             ),
+
 
           ],
         );

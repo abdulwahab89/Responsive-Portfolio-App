@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hovering/hovering.dart';
 import 'package:responsive_portfolio_app/components/custom_card.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 import '../components/rounded_container.dart';
 class EducationView extends StatefulWidget {
   const EducationView({super.key});
@@ -29,12 +27,11 @@ class _EducationViewState extends State<EducationView> {
               SizedBox(
                 height:constraints.maxHeight*0.05,
               ),
-              SizedBox(
+              RoundedContainer(
+                title: 'Education',
+
                 height: constraints.maxHeight*0.05,
-                width: constraints.maxWidth*0.1,
-                child: RoundedContainer(
-                  title: 'Education',
-                ),
+                width: constraints.maxWidth*0.13,
               ),
               Center(
                 child: SizedBox(
@@ -53,12 +50,7 @@ class _EducationViewState extends State<EducationView> {
             child: Column(
                         children: List.generate(educationList.length, (index){
             var educationItem=educationList[index];
-            return Expanded(child: HoverContainer(
-              hoverColor: Colors.yellow,
-                padding: EdgeInsets.symmetric(vertical: constraints.maxHeight*0.015),
-                hoverPadding: EdgeInsets.symmetric(vertical: constraints.maxHeight*0.01),
-
-                child: CustomCard(trailing:educationItem.dateCompleted?? "No date", title: educationItem.courseName?? "No course", texts: educationItem.details??["No details"])));
+            return Expanded(child: CustomCard(trailing:educationItem.dateCompleted?? "No date", title: educationItem.courseName?? "No course", texts: educationItem.details??["No details"]));
                         })
                       ),
           )

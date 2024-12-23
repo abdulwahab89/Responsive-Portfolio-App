@@ -5,7 +5,7 @@ import 'package:responsive_portfolio_app/logic/theme_switcher.dart';
 import 'package:responsive_portfolio_app/utils/appTheme.dart';
 import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 import 'package:responsive_portfolio_app/view/homeScreen.dart';
 
 void main() {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
               ? ThemeMode.dark
               : ThemeMode.light,
           darkTheme: ThemeData(
-            textTheme: Apptheme.getTheme(context,true),
+            textTheme: AppTheme.getTheme(context,true),
             brightness: Brightness.dark,
             scaffoldBackgroundColor: DarkThemeColors.defaultColor,
             iconTheme: const IconThemeData(
@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
+
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
 
@@ -62,14 +63,15 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               color: Colors.transparent,
               elevation: 0,
+
             ),
             scaffoldBackgroundColor: LightThemeColors.backgroundColor,
-
-            textTheme: Apptheme.getTheme(context, false),
+            textTheme: AppTheme.getTheme(context, false),
             useMaterial3: true,
 
           ),
-          home:  Homescreen(profileInfo: profileInfo,),
+          home:  HomeScreen(
+            profileInfo: profileInfo,),
         );
       },
     );

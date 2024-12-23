@@ -1,7 +1,6 @@
-import 'dart:io';
 
 import 'package:responsive_portfolio_app/model/projects.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 
 import 'education.dart';
 

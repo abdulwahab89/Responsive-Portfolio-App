@@ -1,4 +1,3 @@
-import 'package:responsive_portfolio_app/view/education_view.dart';
 
 class Education{
   String? courseName;

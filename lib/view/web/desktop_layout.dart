@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_portfolio_app/model/user_info.dart';
-import 'package:responsive_portfolio_app/utils/data.dart';
+import 'package:responsive_portfolio_app/data/data.dart';
 import 'package:responsive_portfolio_app/view/user_info.dart';
 
 import '../../components/custom_image_widget.dart';
 import '../../components/header_body.dart';
 class DesktopLayout extends StatefulWidget {
- ProfileInfo? profileInfo;
-   DesktopLayout({
+ final ProfileInfo? profileInfo;
+   const DesktopLayout({
     required this.profileInfo,
     super.key});
 

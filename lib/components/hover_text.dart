@@ -1,6 +1,4 @@
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 
@@ -9,15 +7,14 @@ import '../utils/appTheme.dart';
 class HoverText extends StatefulWidget {
   final String text;
   final Color defaultColor;
-  VoidCallback? onPressed;
-  double? padding;
-   HoverText({
-    Key? key,
+   VoidCallback? get onPressed => (){};
+  final double? padding;
+   const HoverText({
+    super.key,
     this.padding,
     required this.text,
     this.defaultColor = Colors.black,
-  })  :
-        super(key: key);
+  });
 
   @override
   _HoverTextState createState() => _HoverTextState();
@@ -48,10 +45,10 @@ class _HoverTextState extends State<HoverText> {
         child: ListTile(
           onTap: widget.onPressed,
           title:Text(widget.text,
-          style: _isHovered? Theme.of(context).textTheme.labelSmall!.copyWith(
+          style: _isHovered? Theme.of(context).textTheme.bodyLarge!.copyWith(
             color: getHoverColor(context),
-            fontWeight: Apptheme.isDarkMode(context)? FontWeight.normal:FontWeight.bold,
-          ):Theme.of(context).textTheme.labelSmall,
+            fontWeight: AppTheme.isDarkMode(context)? FontWeight.normal:FontWeight.bold,
+          ):Theme.of(context).textTheme.bodyLarge,
           )),
       ),
     );

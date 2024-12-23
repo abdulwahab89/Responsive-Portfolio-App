@@ -1,12 +1,6 @@
-import 'dart:ui';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hovering/hovering.dart';
-import 'package:responsive_portfolio_app/components/rounded_container.dart';
 import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
 import 'package:responsive_portfolio_app/utils/colors/light_theme_colors.dart';
 
@@ -15,15 +9,14 @@ import '../utils/appTheme.dart';
 class CardShow extends StatelessWidget {
   final bool placeImageFirst;
   final List<String> imageAddresses;
-  final List<String> techs;
+
   final String title;
   final String description;
 
-  CardShow({
+  const CardShow({
     required this.description,
     this.placeImageFirst = false,
     required this.imageAddresses,
-    required this.techs,
     required this.title,
     super.key,
   });
@@ -35,6 +28,15 @@ class CardShow extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: constraints.maxWidth*0.05,vertical: constraints.maxHeight*0.05),
         child: Container(
           decoration: BoxDecoration(
+
+            boxShadow: [
+              BoxShadow(
+                color: AppTheme.isDarkMode(context)?DarkThemeColors.primaryDarkColor:LightThemeColors.secondarywidgetColor,
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 4),
+              )
+            ],
             borderRadius: BorderRadius.circular(25),
            ),
 
@@ -43,9 +45,9 @@ class CardShow extends StatelessWidget {
               Expanded(child: Container(
                 decoration:  BoxDecoration(
 
-                  color: Apptheme.isDarkMode(context)? DarkThemeColors.secondarywidgetColor:LightThemeColors.backgroundColor,
+                  color: AppTheme.isDarkMode(context)? DarkThemeColors.secondarywidgetColor:LightThemeColors.widgetColor.withOpacity(0.3),
 
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(25),bottomLeft: Radius.circular(25)),
+                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),bottomLeft: Radius.circular(25)),
                 ),
 child: CarouselSlider(
 
@@ -56,7 +58,7 @@ child: CarouselSlider(
         borderRadius: BorderRadius.circular(25),
         image: DecorationImage(
           image: AssetImage(imageUrl),
-          fit: BoxFit.cover ,
+          fit: BoxFit.contain ,
         ),
       ),
     );
@@ -76,9 +78,10 @@ child: CarouselSlider(
               )),
               Expanded(child: Container(
 decoration:  BoxDecoration(
-    color: Apptheme.isDarkMode(context)? DarkThemeColors.widgetColor:LightThemeColors.backgroundColor,
 
-    borderRadius: BorderRadius.only(topRight: Radius.circular(25),bottomRight: Radius.circular(25))
+    color: AppTheme.isDarkMode(context)? DarkThemeColors.widgetColor:LightThemeColors.widgetColor,
+
+    borderRadius: const BorderRadius.only(topRight: Radius.circular(25),bottomRight: Radius.circular(25))
 ),
                 child: SizedBox(
                     height: constraints.maxHeight,

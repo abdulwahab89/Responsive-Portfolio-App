@@ -1,15 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_portfolio_app/utils/colors/dark_theme_colors.dart';
-import 'package:responsive_portfolio_app/utils/responsive_layout/responsive.dart';
 
 import '../utils/appTheme.dart';
 import '../utils/colors/light_theme_colors.dart';
 class RoundedContainer extends StatelessWidget{
-  String title;
-  double? height;
-  double? width;
-   RoundedContainer({
+ final String title;
+  final double? height;
+  final double? width;
+   const RoundedContainer({
      required this.title,
      this.height,
      this.width,
@@ -20,7 +19,7 @@ class RoundedContainer extends StatelessWidget{
     return  Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Apptheme.isDarkMode(context)?DarkThemeColors.secondarywidgetColor:LightThemeColors.widgetColor,
+            color: AppTheme.isDarkMode(context)?DarkThemeColors.secondarywidgetColor:LightThemeColors.widgetColor,
           ),
           height: height,
           width: width,

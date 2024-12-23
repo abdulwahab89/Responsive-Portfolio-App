@@ -16,6 +16,6 @@ class LightThemeColors{
 }
 
 getHoverColor(BuildContext context){
-   Color hoverColor= Apptheme.isDarkMode(context)? const Color(0xffffffffc):const Color(0xff000000);
+   Color hoverColor= AppTheme.isDarkMode(context)? const Color(0xffffffff):const Color(0xff000000);
 return hoverColor;
 }
